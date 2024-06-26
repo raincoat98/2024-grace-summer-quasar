@@ -18,18 +18,18 @@ const user = ref({
     <div class="flex gap-5">
       <q-btn unelevated class="flex-1 bg-green-500 font-bold py-3">
         <a
-          href="sms:01023318579?body={{user.name}}/{{user.grade}}/{{user.pickup}}"
+          :href="`sms:01023318579?body=${user.name}/${user.grade}/${user.pickup}`"
           >안드로이드 신청하기
         </a>
       </q-btn>
       <q-btn unelevated class="flex-1 bg-gray-500 font-bold py-3">
         <a
-          href="sms:01023318579&body={{user.name}}/{{user.grade}}/{{user.pickup}}"
+          :href="`sms:01023318579&body=${user.name}/${user.grade}/${user.pickup}`"
           >아이폰 신청하기
         </a>
       </q-btn>
     </div>
   </div>
 </template>
-ㅞㅡ
+
 <style lang="scss" scoped></style>
