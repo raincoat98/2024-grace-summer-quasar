@@ -10,8 +10,10 @@
   },
   "dependencies": {
     "@quasar/extras": "^1.16.9",
+    "@types/canvas-confetti": "^1.6.4",
     "@types/node": "^20.11.24",
     "axios": "^1.6.7",
+    "canvas-confetti": "^1.9.3",
     "pinia": "^2.1.7",
     "quasar": "^2.14.6",
     "vue": "^3.4.19",
