@@ -26,7 +26,7 @@ import ShareButtons from "@/components/ShareButtons.vue";
     <div class="flex flex-col gap-2">
       <div class="text-2xl font-bold">오시는 길</div>
       <div class="text-xl">경기도 광주시 오포읍 마루들길 168</div>
-      <Image src="/map.webp" alt="Image" width="100%" />
+      <div><q-img :src="'/map.webp'" alt="Image" height="400px" /></div>
     </div>
 
     <div class="flex gap-3 justify-center">
