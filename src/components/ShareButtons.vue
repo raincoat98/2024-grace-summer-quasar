@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import { storeToRefs } from "pinia";
-import confetti from "canvas-confetti";
-import { useCounterStore } from "@/store/counter";
+import { storeToRefs } from 'pinia';
+import confetti from 'canvas-confetti';
+import { useCounterStore } from '@/store/counter';
 
 const store = useCounterStore();
 
@@ -26,12 +26,12 @@ function fireConfetti() {
         >Like</q-btn
       >
       <q-btn
-        class="bg-yellow-400 font-bold text-black border-none"
+        class="text-black border-none bg-yellow-400 font-bold"
         label="카카오톡으로 공유하기"
       />
       <q-btn
         label="url 링크 복사하기"
-        class="bg-gray-200 font-bold text-black border-none"
+        class="text-black border-none bg-gray-200 font-bold"
       />
     </div>
   </div>
