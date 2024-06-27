@@ -34,7 +34,7 @@ function openKakaoMap() {
     <section class="flex justify-center gap-3">
       <q-btn
         label="네이버 지도에서 보기"
-        class="border-none bg-green-500 font-bold"
+        class="border-none bg-green-500 font-bold text-white"
         rounded
         @click="openNaverMap"
       />

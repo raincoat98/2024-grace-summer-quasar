@@ -2,6 +2,7 @@
 import { computed } from 'vue';
 import * as yup from 'yup';
 import { useForm } from 'vee-validate';
+import { Platform } from 'quasar';
 
 const initialValues = {
   name: '',
@@ -25,7 +26,8 @@ const [pickup, pickupAttrs] = defineField('pickup');
 const options = ['리치마트', '우림아파트 버스정류장'];
 
 const body = computed(() => {
-  return `sms:01023318579?body=${values.name}/${values.grade}/${values.pickup}`;
+  const baseUrl = Platform.is.ios ? 'sms:01023318579;' : 'sms:01023318579?';
+  return `${baseUrl}body=${values.name}/${values.grade}/${values.pickup}`;
 });
 
 const onSubmit = handleSubmit(() => {
@@ -74,23 +76,13 @@ const onReset = () => {
         >
           다시 작성
         </q-btn>
-
-        <div class="flex gap-5">
-          <q-btn
-            unelevated
-            class="flex-1 bg-green-500 py-3 font-bold"
-            type="submit"
-          >
-            안드로이드 신청하기
-          </q-btn>
-          <q-btn
-            unelevated
-            class="flex-1 bg-gray-600 py-3 font-bold text-white"
-            type="submit"
-          >
-            아이폰 신청하기
-          </q-btn>
-        </div>
+        <q-btn
+          unelevated
+          class="flex-1 bg-green-500 py-3 font-bold text-white"
+          type="submit"
+        >
+          신청하기
+        </q-btn>
       </div>
     </q-form>
   </div>
