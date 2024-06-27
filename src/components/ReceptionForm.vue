@@ -1,38 +1,98 @@
 <script lang="ts" setup>
-import { reactive, computed } from 'vue';
+import { computed } from 'vue';
+import * as yup from 'yup';
+import { useForm } from 'vee-validate';
 
-const user = reactive({
+const initialValues = {
   name: '',
   grade: '',
   pickup: '',
+};
+
+const { errors, handleSubmit, defineField, resetForm } = useForm({
+  validationSchema: yup.object({
+    name: yup.string().min(2).required('이름을 입력하세요'),
+    grade: yup.string().min(1).required('학년을 입력하세요'),
+    pickup: yup.string().required('탑승위치를 선택하세요'),
+  }),
+  initialValues,
 });
 
-const options = [
-  { label: '리치마트', value: '리치마트' },
-  { label: '우림아파트 버스정류장', value: '우림아파트 버스정류장' },
-];
+const [name, nameAttrs] = defineField('name');
+const [grade, gradeAttrs] = defineField('grade');
+const [pickup, pickupAttrs] = defineField('pickup');
+
+const options = ['리치마트', '우림아파트 버스정류장'];
 
 const body = computed(() => {
-  return `sms:01023318579?body=${user.name}/${user.grade}/${user.pickup}`;
+  return `sms:01023318579?body=${name}/${grade}/${pickup}`;
 });
+
+const onSubmit = handleSubmit(() => {
+  window.location.href = body.value;
+});
+
+const onReset = () => {
+  resetForm({ values: initialValues });
+};
 </script>
 
 <template>
-  <div class="flex flex-col gap-5">
-    <h1 class="font-dongle text-7xl">접수하기 🏖️</h1>
-    <q-input v-model="user.name" label="이름" />
-    <q-input v-model="user.grade" label="학년" />
+  <div class="flex-center flex">
+    <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md">
+      <div class="flex flex-col gap-5">
+        <h1 class="font-dongle text-7xl">접수하기 🏖️</h1>
 
-    <q-select v-model="user.pickup" :options="options" label="탑승위치" />
+        <q-input
+          v-model="name"
+          v-bind="nameAttrs"
+          label="이름"
+          :error="errors.name !== undefined"
+          :error-message="errors.name"
+        />
+        <q-input
+          v-model="grade"
+          v-bind="gradeAttrs"
+          label="학년"
+          :error="errors.grade !== undefined"
+          :error-message="errors.grade"
+        />
+        <q-select
+          v-model="pickup"
+          v-bind="pickupAttrs"
+          :options="options"
+          label="탑승위치"
+          :error="errors.pickup !== undefined"
+          :error-message="errors.pickup"
+        />
+        <q-btn
+          v-if="Object.keys(errors).length > 0"
+          unelevated
+          class="bg-blue-500 py-3 font-bold text-white"
+          type="reset"
+          icon="refresh"
+        >
+          다시 작성
+        </q-btn>
 
-    <div class="flex gap-5">
-      <q-btn unelevated class="flex-1 bg-green-500 py-3">
-        <a :href="body" class="font-bold">안드로이드 신청하기 </a>
-      </q-btn>
-      <q-btn unelevated class="flex-1 bg-gray-600 py-3 text-white">
-        <a :href="body" class="font-bold">아이폰 신청하기 </a>
-      </q-btn>
-    </div>
+        <div class="flex gap-5">
+          <q-btn
+            unelevated
+            class="flex-1 bg-green-500 py-3 font-bold"
+            type="submit"
+          >
+            안드로이드 신청하기
+          </q-btn>
+          <q-btn
+            unelevated
+            class="flex-1 bg-gray-600 py-3 font-bold text-white"
+            type="submit"
+          >
+            아이폰 신청하기
+          </q-btn>
+        </div>
+      </div>
+    </q-form>
   </div>
 </template>
 
