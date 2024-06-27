@@ -1,3 +1,4 @@
+Test
 <script lang="ts" setup>
 import { ref } from 'vue';
 
@@ -42,17 +43,20 @@ getRandomVerse();
       말씀을 통해 마음의 평안과 영적 성장을 이루세요.
     </p>
 
-    <div
-      v-if="randomVerse"
-      class="flex flex-col gap-5 rounded-md bg-blue-200 p-5"
-    >
-      <h2 class="text-3xl font-bold text-blue-900 lg:text-5xl">
-        {{ randomVerse.reference }}
-      </h2>
-      <p class="text-2xl font-bold text-blue-500 lg:text-3xl">
-        {{ randomVerse.text }}
-      </p>
-    </div>
+    <q-card v-if="randomVerse" flat bordered class="my-card bg-blue-200">
+      <q-card-section>
+        <div class="flex min-h-36 items-center justify-center">
+          <div class="flex flex-col gap-5 break-keep">
+            <h2 class="text-3xl font-bold text-blue-900 lg:text-5xl">
+              {{ randomVerse.reference }}
+            </h2>
+            <p class="text-2xl font-bold text-blue-500 lg:text-3xl">
+              {{ randomVerse.text }}
+            </p>
+          </div>
+        </div>
+      </q-card-section>
+    </q-card>
     <div>
       <q-btn
         unelevated
