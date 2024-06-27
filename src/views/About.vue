@@ -57,21 +57,20 @@ getRandomVerse();
         </div>
       </q-card-section>
     </q-card>
-    <div>
+    <div class="flex gap-5">
+      <q-btn
+        unelevated
+        @click="getRandomVerse"
+        class="flex-1 cursor-pointer rounded-md bg-blue-500 p-5 font-bold text-white"
+      >
+        <router-link to="/"> 홈으로 가기 </router-link>
+      </q-btn>
       <q-btn
         unelevated
         label="오늘의 말씀 보기"
         @click="getRandomVerse"
-        class="rounded-md bg-emerald-500 p-5 font-bold text-white"
+        class="flex-1 rounded-md bg-emerald-500 p-5 font-bold text-white"
       />
-    </div>
-    <div>
-      <router-link
-        to="/"
-        class="text-bold cursor-pointer rounded-md bg-blue-800 p-5 text-white"
-      >
-        홈으로 가기
-      </router-link>
     </div>
   </div>
 </template>
