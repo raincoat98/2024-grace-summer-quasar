@@ -14,7 +14,7 @@ import ShareButtons from "@/components/ShareButtons.vue";
       <span> 장소: 은헤와진리교회 광주성전</span>
       <span> 시간표: 9:30 ~ 15:00 </span>
     </div>
-    <div class="flex flex-col gap-2 font-dongle text-green-400">
+    <div class="flex flex-col gap-2 font-dongle text-green-500">
       <div class="text-5xl">일정 안내</div>
       <div class="flex flex-col text-2xl gap-2">
         <span> - 예배 🙏🏻</span>
@@ -26,7 +26,9 @@ import ShareButtons from "@/components/ShareButtons.vue";
     <div class="flex flex-col gap-2">
       <div class="text-2xl font-bold">오시는 길</div>
       <div class="text-xl">경기도 광주시 오포읍 마루들길 168</div>
-      <div><q-img :src="'/map.webp'" alt="Image" height="400px" /></div>
+      <div>
+        <q-img :src="'/map.webp'" alt="Image" height="400px" />
+      </div>
     </div>
 
     <div class="flex gap-3 justify-center">
@@ -41,9 +43,9 @@ import ShareButtons from "@/components/ShareButtons.vue";
         label="카카오 지도에서 보기"
       />
     </div>
-    <div class="font-dongle">
-      <p class="text-5xl">소망의 길</p>
-      <span class="text-5xl">
+    <div class="font-dongle flex flex-col gap-2">
+      <p class="text-5xl text-green-500">소망의 길</p>
+      <span class="text-3xl text-black-700 py-5">
         우리는 낮에 속하였으니 근신하여<br />
         믿음과 사랑의 흉배를 붙이고<br />
         구원의 소망의 투구를 쓰자 <br />
