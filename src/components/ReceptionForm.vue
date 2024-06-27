@@ -1,10 +1,13 @@
 <script lang="ts" setup>
-import { ref } from "vue";
+import { reactive, computed } from "vue";
 
-const user = ref({
+const user = reactive({
   name: "",
   grade: "",
   pickup: "",
+});
+const body = computed(() =>{
+  return `sms:01023318579?body=${user.name}/${user.grade}/${user.pickup}`;
 });
 </script>
 
@@ -18,13 +21,13 @@ const user = ref({
     <div class="flex gap-5">
       <q-btn unelevated class="flex-1 bg-green-500 font-bold py-3">
         <a
-          :href="`sms:01023318579?body=${user.name}/${user.grade}/${user.pickup}`"
+          :href="body"
           >안드로이드 신청하기
         </a>
       </q-btn>
       <q-btn unelevated class="flex-1 bg-gray-500 font-bold py-3">
         <a
-          :href="`sms:01023318579&body=${user.name}/${user.grade}/${user.pickup}`"
+          :href="body"
           >아이폰 신청하기
         </a>
       </q-btn>
