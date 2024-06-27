@@ -38,7 +38,7 @@ const onReset = () => {
 </script>
 
 <template>
-  <div class="flex-center flex">
+  <div class="flex-center flex break-keep">
     <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md">
       <div class="flex flex-col gap-5">
         <h1 class="font-dongle text-7xl">접수하기 🏖️</h1>
