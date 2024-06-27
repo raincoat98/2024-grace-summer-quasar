@@ -29,47 +29,44 @@ function copyUrl() {
       console.error('Failed to copy: ', err);
     });
 }
+declare const Kakao: any;
 
 onMounted(() => {
-  if (window.Kakao) {
-    window.Kakao.Share.createDefaultButton({
-      container: '#kakaotalk-sharing-btn',
-      objectType: 'feed',
-      content: {
-        title: '2024 여름성경학교 광주성전 🏝️',
-        description: '#즐거운 예배 #다양한 프로그램 #물놀이💦',
-        imageUrl:
-          'http://k.kakaocdn.net/dn/Q2iNx/btqgeRgV54P/VLdBs9cvyn8BJXB3o7N8UK/kakaolink40_original.png',
+  Kakao.Share.createDefaultButton({
+    container: '#kakaotalk-sharing-btn',
+    objectType: 'feed',
+    content: {
+      title: '2024 여름성경학교 광주성전 🏝️',
+      description: '#즐거운 예배 #다양한 프로그램 #물놀이💦',
+      imageUrl:
+        'http://k.kakaocdn.net/dn/Q2iNx/btqgeRgV54P/VLdBs9cvyn8BJXB3o7N8UK/kakaolink40_original.png',
+      link: {
+        mobileWebUrl: window.location.href,
+        webUrl: window.location.href,
+      },
+    },
+    social: {
+      likeCount: 286,
+      commentCount: 45,
+      sharedCount: 845,
+    },
+    buttons: [
+      {
+        title: '웹으로 보기',
         link: {
           mobileWebUrl: window.location.href,
           webUrl: window.location.href,
         },
       },
-      social: {
-        likeCount: 286,
-        commentCount: 45,
-        sharedCount: 845,
+      {
+        title: '앱으로 보기',
+        link: {
+          mobileWebUrl: window.location.href,
+          webUrl: window.location.href,
+        },
       },
-      buttons: [
-        {
-          title: '웹으로 보기',
-          link: {
-            mobileWebUrl: window.location.href,
-            webUrl: window.location.href,
-          },
-        },
-        {
-          title: '앱으로 보기',
-          link: {
-            mobileWebUrl: window.location.href,
-            webUrl: window.location.href,
-          },
-        },
-      ],
-    });
-  } else {
-    console.error('Kakao SDK not found.');
-  }
+    ],
+  });
 });
 </script>
 
