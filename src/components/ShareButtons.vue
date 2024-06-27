@@ -2,6 +2,7 @@
 import { storeToRefs } from 'pinia';
 import confetti from 'canvas-confetti';
 import { useCounterStore } from '@/store/counter';
+import { onMounted } from 'vue';
 
 const store = useCounterStore();
 
@@ -17,10 +18,6 @@ function fireConfetti() {
   store.increment();
 }
 
-function shareToKakao() {
-  alert('카카오톡 공유하기 아직 없지요');
-}
-
 function copyUrl() {
   const url = window.location.href;
   navigator.clipboard
@@ -32,6 +29,48 @@ function copyUrl() {
       console.error('Failed to copy: ', err);
     });
 }
+
+onMounted(() => {
+  if (window.Kakao) {
+    window.Kakao.Share.createDefaultButton({
+      container: '#kakaotalk-sharing-btn',
+      objectType: 'feed',
+      content: {
+        title: '2024 여름성경학교 광주성전 🏝️',
+        description: '#즐거운 예배 #다양한 프로그램 #물놀이💦',
+        imageUrl:
+          'http://k.kakaocdn.net/dn/Q2iNx/btqgeRgV54P/VLdBs9cvyn8BJXB3o7N8UK/kakaolink40_original.png',
+        link: {
+          mobileWebUrl: window.location.href,
+          webUrl: window.location.href,
+        },
+      },
+      social: {
+        likeCount: 286,
+        commentCount: 45,
+        sharedCount: 845,
+      },
+      buttons: [
+        {
+          title: '웹으로 보기',
+          link: {
+            mobileWebUrl: window.location.href,
+            webUrl: window.location.href,
+          },
+        },
+        {
+          title: '앱으로 보기',
+          link: {
+            mobileWebUrl: window.location.href,
+            webUrl: window.location.href,
+          },
+        },
+      ],
+    });
+  } else {
+    console.error('Kakao SDK not found.');
+  }
+});
 </script>
 
 <template>
@@ -42,10 +81,11 @@ function copyUrl() {
         >Like</q-btn
       >
       <q-btn
-        @click="shareToKakao"
+        id="kakaotalk-sharing-btn"
         class="text-black border-none bg-yellow-400 font-bold"
-        label="카카오톡으로 공유하기"
-      />
+      >
+        카카오톡으로 공유하기
+      </q-btn>
       <q-btn
         @click="copyUrl"
         label="url 링크 복사하기"
