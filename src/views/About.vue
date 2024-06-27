@@ -61,8 +61,9 @@ getRandomVerse();
       <q-btn
         unelevated
         class="flex-1 cursor-pointer rounded-md bg-blue-500 p-5 font-bold text-white"
+        to="/"
       >
-        <router-link to="/"> 홈으로 가기 </router-link>
+        홈으로 가기
       </q-btn>
       <q-btn
         unelevated

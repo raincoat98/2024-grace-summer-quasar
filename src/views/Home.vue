@@ -54,7 +54,7 @@ const bibleVerses = ref({
     <section>
       <router-link
         to="/about"
-        class="text-bold cursor-pointer rounded-md bg-blue-800 p-5 text-white"
+        class="text-bold cursor-pointer rounded-md bg-blue-500 p-5 text-white"
       >
         말씀 묵상하기
       </router-link>
