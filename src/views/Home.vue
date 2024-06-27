@@ -15,9 +15,9 @@ function openKakaoMap() {
 <template>
   <div class="flex flex-col gap-10 text-center lg:gap-20">
     <section
-      class="line-height-1 text-wrap break-keep font-dongle text-8xl text-black-800"
+      class="text-wrap break-keep font-dongle text-8xl leading-9 text-black-800"
     >
-      2024 여름성경학교 광주성전
+      2024 여름성경학교 광주성전 ⛱️
     </section>
 
     <section class="flex flex-col gap-3 font-dongle text-3xl text-yellow-400">
