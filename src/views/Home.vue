@@ -4,7 +4,7 @@ import ShareButtons from '@/components/ShareButtons.vue';
 </script>
 
 <template>
-  <div class="flex flex-col gap-20 text-center">
+  <div class="flex flex-col gap-10 text-center lg:gap-20">
     <section
       class="line-height-1 text-wrap break-keep font-dongle text-8xl text-black-800"
     >

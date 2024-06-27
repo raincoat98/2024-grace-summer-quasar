@@ -45,7 +45,7 @@ getRandomVerse();
 
     <q-card v-if="randomVerse" flat bordered class="my-card bg-blue-200">
       <q-card-section>
-        <div class="flex min-h-36 items-center justify-center">
+        <div class="flex min-h-48 items-center justify-center lg:min-h-36">
           <div class="flex flex-col gap-5 break-keep">
             <h2 class="text-3xl font-bold text-blue-900 lg:text-5xl">
               {{ randomVerse.reference }}
