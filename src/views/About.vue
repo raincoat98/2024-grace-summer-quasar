@@ -33,8 +33,10 @@ getRandomVerse();
 </script>
 
 <template>
-  <div class="flex flex-col gap-10">
-    <h1 class="text-blue-600 text-xl lg:text-5xl">묵상의 길로 나아가자</h1>
+  <div class="flex flex-col gap-10 text-center">
+    <h1 class="text-blue-600 text-2xl lg:text-5xl font-bold">
+      묵상의 길로 나아가자
+    </h1>
     <p class="text-blue-500 text-md lg:text-3xl">
       이 페이지는 성경 말씀을 묵상하며 나아가는 길을 제시합니다.<br />
       말씀을 통해 마음의 평안과 영적 성장을 이루세요.
@@ -51,10 +53,10 @@ getRandomVerse();
       v-if="randomVerse"
       class="bg-blue-200 rounded-md flex flex-col p-5 gap-5"
     >
-      <h2 class="text-blue-900 text-5xl font-bold">
+      <h2 class="text-blue-900 text-3xl lg:text-5xl font-bold">
         {{ randomVerse.reference }}
       </h2>
-      <p class="text-blue-500 text-3xl font-bold">
+      <p class="text-blue-500 text-2xl lg:text-3xl font-bold">
         {{ randomVerse.text }}
       </p>
     </div>
@@ -62,7 +64,7 @@ getRandomVerse();
     <div>
       <router-link
         to="/"
-        class="button component px-5 py-5 bg-blue-900 text-white rounded-md"
+        class="text-bold p-5 bg-blue-800 text-white rounded-md cursor-pointer"
       >
         홈으로 가기
       </router-link>

@@ -20,9 +20,11 @@ function fireConfetti() {
 
 <template>
   <div>
-    <p class="text-5xl">Like: {{ count }}</p>
+    <p class="text-5xl font-bold">Like: {{ count }}</p>
     <div class="flex w-full justify-center gap-3 py-5">
-      <q-btn @click="fireConfetti" class="bg-green-500 font-bold">Like</q-btn>
+      <q-btn @click="fireConfetti" class="bg-green-500 font-bold text-white"
+        >Like</q-btn
+      >
       <q-btn
         class="bg-yellow-400 font-bold text-black border-none"
         label="카카오톡으로 공유하기"

@@ -56,7 +56,12 @@ import ShareButtons from "@/components/ShareButtons.vue";
     <ReceptionForm />
     <ShareButtons />
     <section>
-      <router-link to="/about">Go to About</router-link>
+      <router-link
+        to="/about"
+        class="text-bold p-5 bg-blue-800 text-white rounded-md cursor-pointer"
+      >
+        말씀 묵상하기
+      </router-link>
     </section>
   </div>
 </template>

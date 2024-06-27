@@ -1,7 +1,7 @@
 <script lang="ts" setup></script>
 
 <template>
-  <div class="container mx-auto px-5 pb-20">
+  <div class="container mx-auto p-5 pb-20">
     <router-view />
   </div>
 </template>
