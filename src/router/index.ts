@@ -1,28 +1,40 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
-import Home from "@/views/Home.vue";
-import About from "@/views/About.vue";
-import MainLayout from "@/layouts/MainLayout.vue";
+import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
+import Home from '@/views/Home.vue';
+import About from '@/views/About.vue';
+import Test from '@/views/Test.vue';
+import MainLayout from '@/layouts/MainLayout.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
-    path: "/",
-    name: "Home",
+    path: '/',
+    name: 'Home',
     component: MainLayout,
     children: [
       {
-        path: "",
+        path: '',
         component: Home,
       },
     ],
   },
   {
-    path: "/about",
-    name: "About",
+    path: '/about',
+    name: 'About',
     component: MainLayout,
     children: [
       {
-        path: "",
+        path: '',
         component: About,
+      },
+    ],
+  },
+  {
+    path: '/test',
+    name: 'Test',
+    component: MainLayout,
+    children: [
+      {
+        path: '',
+        component: Test,
       },
     ],
   },
