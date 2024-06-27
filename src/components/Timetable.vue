@@ -1,10 +1,28 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+const props = defineProps<{
+  timetable: {
+    date: string;
+    location: string;
+    time: string;
+  };
+}>();
+
+const timetable = computed(() => {
+  return {
+    date: props.timetable.date,
+    location: props.timetable.location,
+    time: props.timetable.time,
+  };
+});
+</script>
 
 <template>
   <section class="flex flex-col gap-3 font-dongle text-3xl text-yellow-400">
-    <span> 날짜: 2024 년 7 월 13 일 </span>
-    <span> 장소: 은헤와진리교회 광주성전</span>
-    <span> 시간표: 9:30 ~ 15:00 </span>
+    <div class="flex flex-col gap-1">
+      <span>날짜: {{ timetable.date }}</span>
+      <span>장소: {{ timetable.location }}</span>
+      <span>시간: {{ timetable.time }}</span>
+    </div>
   </section>
 </template>
 

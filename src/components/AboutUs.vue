@@ -1,10 +1,23 @@
 <script lang="ts" setup>
+const props = defineProps<{
+  location: {
+    name: string;
+    address: string;
+    naverMapUrl: string;
+    kakaoMapUrl: string;
+  };
+}>();
+
+const location = computed(() => {
+  return props.location;
+});
+
 function openNaverMap() {
-  const naverMapUrl = `https://naver.me/5chEWenv`;
+  const naverMapUrl = location.value.naverMapUrl;
   window.open(naverMapUrl, '_blank');
 }
 function openKakaoMap() {
-  const kakaoMapUrl = `https://kko.to/Oau1Tshxg-`;
+  const kakaoMapUrl = location.value.kakaoMapUrl;
   window.open(kakaoMapUrl, '_blank');
 }
 </script>
@@ -13,7 +26,7 @@ function openKakaoMap() {
   <div class="flex flex-col gap-5">
     <section class="flex flex-col gap-2">
       <div class="text-2xl font-bold">오시는 길</div>
-      <div class="text-xl">경기도 광주시 오포읍 마루들길 168</div>
+      <div class="text-xl">{{ location.address }}</div>
       <div>
         <q-img :src="'/map.webp'" alt="Image" height="400px" :fit="'contain'" />
       </div>
