@@ -9,7 +9,7 @@ const initialValues = {
   pickup: '',
 };
 
-const { errors, handleSubmit, defineField, resetForm } = useForm({
+const { values, errors, handleSubmit, defineField, resetForm } = useForm({
   validationSchema: yup.object({
     name: yup.string().min(2).required('이름을 입력하세요'),
     grade: yup.string().min(1).required('학년을 입력하세요'),
@@ -25,7 +25,7 @@ const [pickup, pickupAttrs] = defineField('pickup');
 const options = ['리치마트', '우림아파트 버스정류장'];
 
 const body = computed(() => {
-  return `sms:01023318579?body=${name}/${grade}/${pickup}`;
+  return `sms:01023318579?body=${values.name}/${values.grade}/${values.pickup}`;
 });
 
 const onSubmit = handleSubmit(() => {
