@@ -60,7 +60,6 @@ getRandomVerse();
     <div class="flex gap-5">
       <q-btn
         unelevated
-        @click="getRandomVerse"
         class="flex-1 cursor-pointer rounded-md bg-blue-500 p-5 font-bold text-white"
       >
         <router-link to="/"> 홈으로 가기 </router-link>
