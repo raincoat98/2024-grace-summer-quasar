@@ -4,12 +4,12 @@ import { reactive, computed } from 'vue';
 const user = reactive({
   name: '',
   grade: '',
-  pickup: '',
+  pickup: '리치마트',
 });
 
 const options = [
-  { label: '리치마트', value: '리치마트' },
-  { label: '우림아파트 버스정류장', value: '우림아파트 버스정류장' },
+  '리치마트',
+  '우림아파트 버스정류장'
 ];
 
 const body = computed(() => {
