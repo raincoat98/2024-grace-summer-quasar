@@ -113,31 +113,35 @@ const copyUrl = () => {
 
 <template>
   <div>
-    <span v-if="isLoading">
-      <div class="flex w-full justify-center py-5">
-        <q-spinner color="primary" size="3em" />
+    <div class="py-10">
+      <span v-if="isLoading">
+        <div class="5 flex w-full justify-center">
+          <q-spinner color="primary" size="3em" />
+        </div>
+      </span>
+      <div v-else class="text-5xl font-bold">
+        <span> Like: {{ likeCount }} </span>
       </div>
-    </span>
-    <div v-else class="text-5xl font-bold">
-      <span> Like: {{ likeCount }} </span>
     </div>
-    <q-btn
-      @click="fireConfetti"
-      class="bg-green-500 font-bold text-white"
-      :disable="isLoading"
-      >Like</q-btn
-    >
-    <q-btn
-      id="kakaotalk-sharing-btn"
-      class="text-black border-none bg-yellow-400 font-bold"
-    >
-      카카오톡으로 공유하기
-    </q-btn>
-    <q-btn
-      @click="copyUrl"
-      label="url 링크 복사하기"
-      class="text-black border-none bg-gray-200 font-bold"
-    />
+    <div class="flex justify-center gap-5">
+      <q-btn
+        @click="fireConfetti"
+        class="bg-green-500 font-bold text-white"
+        :disable="isLoading"
+        >Like</q-btn
+      >
+      <q-btn
+        id="kakaotalk-sharing-btn"
+        class="text-black border-none bg-yellow-400 font-bold"
+      >
+        카카오톡으로 공유하기
+      </q-btn>
+      <q-btn
+        @click="copyUrl"
+        label="url 링크 복사하기"
+        class="text-black border-none bg-gray-200 font-bold"
+      />
+    </div>
   </div>
 </template>
 
