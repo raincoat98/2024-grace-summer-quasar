@@ -1,4 +1,6 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import { Transition } from 'vue';
+</script>
 
 <template>
   <div>
@@ -9,6 +11,12 @@
       </q-card-section>
     </q-card>
   </div>
-</template>
 
-<style lang="scss" scoped></style>
+  <Transition
+    appear
+    enter-active-class="animate__animated animate__bounce animate__slower"
+    leave-active-class="animate__animated animate__bounceOut animate__slower"
+  >
+    <q-btn color="secondary" icon="mail" label="Email" />
+  </Transition>
+</template>
