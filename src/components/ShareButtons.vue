@@ -10,13 +10,16 @@ const store = useCounterStore();
 
 const likeCount = ref(0);
 const isUpdating = ref(false);
+const isLoading = ref(true);
 
 const fetchLikes = async () => {
+  isLoading.value = true;
   const { data, error } = await supabase
     .from('likes')
     .select('count')
     .eq('id', 1)
     .single();
+  isLoading.value = false;
   if (data) {
     likeCount.value = data.count;
     console.log('Fetched likes:', data.count);
@@ -110,7 +113,10 @@ const copyUrl = () => {
 <template>
   <div>
     <p class="text-5xl font-bold">Like: {{ likeCount }}</p>
-    <div class="flex w-full justify-center gap-3 py-5">
+    <div v-if="isLoading" class="flex w-full justify-center py-5">
+      <p>Loading... <q-spinner color="primary" size="3em" /></p>
+    </div>
+    <div v-else class="flex w-full justify-center gap-3 py-5">
       <q-btn @click="fireConfetti" class="bg-green-500 font-bold text-white"
         >Like</q-btn
       >
