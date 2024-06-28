@@ -114,7 +114,9 @@ const copyUrl = () => {
 <template>
   <div>
     <span v-if="isLoading">
-      <q-spinner color="primary" size="3em" />
+      <div class="flex w-full justify-center">
+        <q-spinner color="primary" size="3em" />
+      </div>
     </span>
     <div v-else class="text-5xl font-bold">
       <span> Like: {{ likeCount }} </span>
