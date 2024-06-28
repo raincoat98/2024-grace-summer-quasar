@@ -1,37 +1,49 @@
 <script lang="ts" setup>
-import { storeToRefs } from 'pinia';
 import confetti from 'canvas-confetti';
 import { useCounterStore } from '@/store/counter';
-import { onMounted } from 'vue';
+import { supabase } from '@/supabaseClient';
+import { ref, onMounted } from 'vue';
+
+declare const Kakao: any;
 
 const store = useCounterStore();
 
-const { count } = storeToRefs(store);
+const likeCount = ref(0);
+const isUpdating = ref(false);
 
-function fireConfetti() {
-  confetti({
-    particleCount: 100,
-    spread: 70,
-    origin: { y: 0.6 },
-  });
+const fetchLikes = async () => {
+  const { data, error } = await supabase.from('likes').select('count').single();
+  if (data) {
+    likeCount.value = data.count;
+  } else {
+    console.error(error);
+  }
+};
 
-  store.increment();
-}
+const incrementLike = async () => {
+  if (isUpdating.value) return;
 
-function copyUrl() {
-  const url = window.location.href;
-  navigator.clipboard
-    .writeText(url)
-    .then(() => {
-      alert('URL이 복사되었습니다.');
-    })
-    .catch((err) => {
-      console.error('Failed to copy: ', err);
-    });
-}
-declare const Kakao: any;
+  isUpdating.value = true;
+
+  const { data, error } = await supabase
+    .from('likes')
+    .update({ count: likeCount.value + 1 })
+    .eq('id', 1)
+    .select()
+    .single();
+
+  isUpdating.value = false;
+
+  if (data) {
+    likeCount.value = data.count;
+  } else {
+    console.error(error);
+  }
+};
 
 onMounted(() => {
+  fetchLikes();
+
   Kakao.Share.createDefaultButton({
     container: '#kakaotalk-sharing-btn',
     objectType: 'feed',
@@ -62,11 +74,33 @@ onMounted(() => {
     ],
   });
 });
-</script>
 
+const fireConfetti = () => {
+  confetti({
+    particleCount: 100,
+    spread: 70,
+    origin: { y: 0.6 },
+  });
+
+  incrementLike();
+  store.increment();
+};
+
+const copyUrl = () => {
+  const url = window.location.href;
+  navigator.clipboard
+    .writeText(url)
+    .then(() => {
+      alert('URL이 복사되었습니다.');
+    })
+    .catch((err) => {
+      console.error('Failed to copy: ', err);
+    });
+};
+</script>
 <template>
   <div>
-    <p class="text-5xl font-bold">Like: {{ count }}</p>
+    <p class="text-5xl font-bold">Like: {{ likeCount }}</p>
     <div class="flex w-full justify-center gap-3 py-5">
       <q-btn @click="fireConfetti" class="bg-green-500 font-bold text-white"
         >Like</q-btn

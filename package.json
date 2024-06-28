@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@quasar/extras": "^1.16.9",
+    "@supabase/supabase-js": "^2.44.1",
     "@types/canvas-confetti": "^1.6.4",
     "@types/node": "^20.11.24",
     "@vee-validate/yup": "^4.13.1",

@@ -1,10 +1,10 @@
-import { defineConfig } from "vite";
-import vue from "@vitejs/plugin-vue";
-import tsconfigPaths from "vite-tsconfig-paths";
-import AutoImport from "unplugin-auto-import/vite";
-import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
-import { resolve } from "path";
-import { quasar, transformAssetUrls } from "@quasar/vite-plugin";
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
+import tsconfigPaths from 'vite-tsconfig-paths';
+import AutoImport from 'unplugin-auto-import/vite';
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
+import { resolve } from 'path';
+import { quasar, transformAssetUrls } from '@quasar/vite-plugin';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -14,10 +14,10 @@ export default defineConfig({
     }),
     tsconfigPaths(),
     AutoImport({
-      imports: ["vue", "vue-router", "pinia"],
+      imports: ['vue', 'vue-router', 'pinia'],
       resolvers: [ElementPlusResolver()],
-      dirs: ["./src/components/**"],
-      dts: "./src/auto-imports.d.ts",
+      dirs: ['./src/components/**'],
+      dts: './src/auto-imports.d.ts',
       eslintrc: {
         enabled: true,
       },
@@ -27,7 +27,10 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      "@": resolve(__dirname, "src"),
+      '@': resolve(__dirname, 'src'),
     },
+  },
+  define: {
+    'process.env': process.env,
   },
 });
