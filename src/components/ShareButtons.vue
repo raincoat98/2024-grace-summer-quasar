@@ -114,7 +114,7 @@ const copyUrl = () => {
 <template>
   <div>
     <span v-if="isLoading">
-      <div class="flex w-full justify-center">
+      <div class="flex w-full justify-center py-5">
         <q-spinner color="primary" size="3em" />
       </div>
     </span>
