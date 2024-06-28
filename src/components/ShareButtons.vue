@@ -12,16 +12,21 @@ const likeCount = ref(0);
 const isUpdating = ref(false);
 
 const fetchLikes = async () => {
-  const { data, error } = await supabase.from('likes').select('count').single();
+  const { data, error } = await supabase
+    .from('likes')
+    .select('count')
+    .eq('id', 1)
+    .single();
   if (data) {
     likeCount.value = data.count;
+    console.log('Fetched likes:', data.count);
   } else {
-    console.error(error);
+    console.error('Error fetching likes:', error);
   }
 };
 
 const incrementLike = async () => {
-  if (isUpdating.value) return;
+  if (isUpdating.value || likeCount.value === 0) return;
 
   isUpdating.value = true;
 
@@ -36,8 +41,9 @@ const incrementLike = async () => {
 
   if (data) {
     likeCount.value = data.count;
+    console.log('Updated likes:', data.count);
   } else {
-    console.error(error);
+    console.error('Error updating likes:', error);
   }
 };
 
@@ -82,8 +88,10 @@ const fireConfetti = () => {
     origin: { y: 0.6 },
   });
 
-  incrementLike();
-  store.increment();
+  if (likeCount.value !== 0) {
+    incrementLike();
+    store.increment();
+  }
 };
 
 const copyUrl = () => {
@@ -98,6 +106,7 @@ const copyUrl = () => {
     });
 };
 </script>
+
 <template>
   <div>
     <p class="text-5xl font-bold">Like: {{ likeCount }}</p>
