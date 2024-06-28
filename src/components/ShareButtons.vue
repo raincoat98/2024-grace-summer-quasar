@@ -38,17 +38,11 @@ onMounted(() => {
     content: {
       title: '2024 여름성경학교 광주성전 🏝️',
       description: '#즐거운 예배 #다양한 프로그램 #물놀이💦',
-      imageUrl:
-        'http://k.kakaocdn.net/dn/Q2iNx/btqgeRgV54P/VLdBs9cvyn8BJXB3o7N8UK/kakaolink40_original.png',
+      imageUrl: 'https://i.imgur.com/PQ2yLBw.jpeg',
       link: {
         mobileWebUrl: window.location.href,
         webUrl: window.location.href,
       },
-    },
-    social: {
-      likeCount: 286,
-      commentCount: 45,
-      sharedCount: 845,
     },
     buttons: [
       {
