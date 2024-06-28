@@ -12,11 +12,17 @@ const title = computed(() => {
 </script>
 
 <template>
-  <section
-    class="text-wrap break-keep font-dongle text-8xl leading-normal text-black-800"
+  <Transition
+    appear
+    enter-active-class="animate__animated animate__bounce animate__slower"
+    leave-active-class="animate__animated animate__bounceOut animate__slower"
   >
-    {{ title }}
-  </section>
+    <section
+      class="text-wrap break-keep font-dongle text-8xl leading-normal text-black-800"
+    >
+      {{ title }}
+    </section>
+  </Transition>
 </template>
 
 <style lang="scss" scoped></style>
