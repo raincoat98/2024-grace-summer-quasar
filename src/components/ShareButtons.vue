@@ -3,6 +3,7 @@ import confetti from 'canvas-confetti';
 import { useCounterStore } from '@/store/counter';
 import { supabase } from '@/supabaseClient';
 import { ref, onMounted } from 'vue';
+import { QSpinner } from 'quasar';
 
 declare const Kakao: any;
 
@@ -112,12 +113,20 @@ const copyUrl = () => {
 
 <template>
   <div>
-    <p class="text-5xl font-bold">Like: {{ likeCount }}</p>
+    <div class="text-5xl font-bold">
+      <span v-if="isLoading">
+        Loading... <q-spinner color="primary" size="3em" />
+      </span>
+      <span v-else> Like: {{ likeCount }} </span>
+    </div>
     <div v-if="isLoading" class="flex w-full justify-center py-5">
       <p>Loading... <q-spinner color="primary" size="3em" /></p>
     </div>
     <div v-else class="flex w-full justify-center gap-3 py-5">
-      <q-btn @click="fireConfetti" class="bg-green-500 font-bold text-white"
+      <q-btn
+        @click="fireConfetti"
+        class="bg-green-500 font-bold text-white"
+        :disable="isLoading"
         >Like</q-btn
       >
       <q-btn
