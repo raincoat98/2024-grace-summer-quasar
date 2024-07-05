@@ -15,6 +15,10 @@ const verses = ref([
     reference: '빌립보서 4:13',
     text: '내게 능력 주시는 자 안에서 내가 모든 것을 할 수 있느니라.',
   },
+  {
+    reference: '디모데후서 1:7',
+    text: '하나님이 우리에게 주신 것은 두려워하는 마음이 아니요 오직 능력과 사랑과 근신하는 마음이니.',
+  },
 ]);
 
 const randomVerse = ref(verses.value[0]);
