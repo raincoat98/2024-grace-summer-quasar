@@ -23,7 +23,7 @@ const [name, nameAttrs] = defineField('name');
 const [grade, gradeAttrs] = defineField('grade');
 const [pickup, pickupAttrs] = defineField('pickup');
 
-const options = ['리치마트', '우림아파트 버스정류장'];
+const options = ['리치마트', '매곡초등학교 앞', '우림아파트 버스정류장'];
 
 const body = computed(() => {
   const baseUrl = Platform.is.ios ? 'sms:01023318579;' : 'sms:01023318579?';
